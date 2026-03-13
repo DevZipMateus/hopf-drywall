@@ -273,15 +273,18 @@ header.scrolled {
 .hero-bg {
   position: absolute;
   inset: 0;
-  background: var(--azul-escuro);
+  background:
+    linear-gradient(rgba(18, 36, 58, 0.82), rgba(18, 36, 58, 0.82)),
+    url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1920&q=80&auto=format&fit=crop') center / cover no-repeat;
+  background-attachment: fixed, fixed;
 }
 
 .hero-overlay {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse 70% 60% at 75% 50%, rgba(232, 119, 34, 0.12), transparent),
-    radial-gradient(ellipse 50% 80% at 20% 80%, rgba(28, 53, 87, 0.5), transparent);
+    radial-gradient(ellipse 70% 60% at 75% 50%, rgba(232, 119, 34, 0.10), transparent),
+    radial-gradient(ellipse 50% 80% at 20% 80%, rgba(28, 53, 87, 0.4), transparent);
 }
 
 .hero-accent-1 {
@@ -633,7 +636,12 @@ header.scrolled {
 }
 
 /* ===== SOBRE ===== */
-.sobre-section { background: var(--branco); }
+.sobre-section {
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.93), rgba(255, 255, 255, 0.93)),
+    url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=1920&q=80&auto=format&fit=crop') center / cover no-repeat;
+  background-attachment: scroll, fixed;
+}
 
 .sobre-grid {
   display: grid;
@@ -725,7 +733,10 @@ header.scrolled {
 
 /* ===== SERVIÇOS ===== */
 .servicos-section {
-  background: var(--azul);
+  background:
+    linear-gradient(rgba(28, 53, 87, 0.90), rgba(28, 53, 87, 0.90)),
+    url('https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=1920&q=80&auto=format&fit=crop') center / cover no-repeat;
+  background-attachment: scroll, fixed;
 }
 
 .servicos-grid {
@@ -776,7 +787,12 @@ header.scrolled {
 }
 
 /* ===== PRODUTOS ===== */
-.produtos-section { background: var(--cinza-claro); }
+.produtos-section {
+  background:
+    linear-gradient(rgba(245, 247, 250, 0.94), rgba(245, 247, 250, 0.94)),
+    url('https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1920&q=80&auto=format&fit=crop') center / cover no-repeat;
+  background-attachment: scroll, fixed;
+}
 
 .produtos-grid {
   display: grid;
@@ -846,7 +862,10 @@ header.scrolled {
 
 /* ===== DIFERENCIAIS ===== */
 .diferenciais-section {
-  background: var(--azul-escuro);
+  background:
+    linear-gradient(rgba(18, 36, 58, 0.88), rgba(18, 36, 58, 0.88)),
+    url('https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=1920&q=80&auto=format&fit=crop') center / cover no-repeat;
+  background-attachment: scroll, fixed;
 }
 
 .diferenciais-grid {
@@ -898,7 +917,12 @@ header.scrolled {
 }
 
 /* ===== CONTATO ===== */
-.contato-section { background: var(--branco); }
+.contato-section {
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.95)),
+    url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1920&q=80&auto=format&fit=crop') center / cover no-repeat;
+  background-attachment: scroll, fixed;
+}
 
 .contato-grid {
   display: grid;
@@ -1209,4 +1233,27 @@ header.scrolled {
 /* Mobile pequeno */
 @media (max-width: 380px) {
   .brand-name { font-size: 1.1rem; }
+}
+
+/* ===== DESATIVAR PARALLAX EM MOBILE/TABLET (≤1023px) ===== */
+/* Evita bugs de renderização em iOS e Android */
+@media (max-width: 1023px) {
+  .hero-bg {
+    background-attachment: scroll, scroll;
+  }
+  .sobre-section {
+    background-attachment: scroll, scroll;
+  }
+  .servicos-section {
+    background-attachment: scroll, scroll;
+  }
+  .produtos-section {
+    background-attachment: scroll, scroll;
+  }
+  .diferenciais-section {
+    background-attachment: scroll, scroll;
+  }
+  .contato-section {
+    background-attachment: scroll, scroll;
+  }
 }
