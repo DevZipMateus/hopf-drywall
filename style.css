@@ -1219,28 +1219,42 @@ header.scrolled {
 
 /* ===== RESPONSIVIDADE ===== */
 
-/* 4K / Ultrawide */
+/* Full HD e superiores (≥1920px) */
+@media (min-width: 1920px) {
+  .container { max-width: 1600px; }
+  .section   { padding: 120px 0; }
+  .hero-stats { max-width: 640px; }
+}
+
+/* 4K / Widescreen (≥1600px) */
 @media (min-width: 1600px) {
   .container { max-width: 1400px; }
 }
 
-/* Tablet large */
-@media (max-width: 1100px) {
-  .diferenciais-grid { grid-template-columns: repeat(2, 1fr); }
-  .footer-grid { grid-template-columns: 1fr 1fr; }
-  .footer-brand { grid-column: span 2; }
+/* HD — 1366px / 1280px */
+@media (max-width: 1280px) {
+  .container   { padding: 0 32px; }
+  .footer-grid { gap: 36px; }
+  .sobre-grid  { gap: 44px; }
 }
 
-/* Tablet */
+/* Tablet grande — 1100px */
+@media (max-width: 1100px) {
+  .servicos-grid     { grid-template-columns: repeat(2, 1fr); }
+  .produtos-grid     { grid-template-columns: repeat(2, 1fr); }
+  .diferenciais-grid { grid-template-columns: repeat(2, 1fr); }
+  .footer-grid       { grid-template-columns: 1fr 1fr; gap: 32px; }
+  .footer-brand      { grid-column: span 2; }
+}
+
+/* Tablet portrait — 900px */
 @media (max-width: 900px) {
   .section { padding: 72px 0; }
 
   .desktop-nav { display: none; }
-  .hamburger { display: flex; }
+  .hamburger   { display: flex; }
 
-  .sobre-grid { grid-template-columns: 1fr; gap: 40px; }
-  .servicos-grid { grid-template-columns: repeat(2, 1fr); }
-  .produtos-grid { grid-template-columns: repeat(2, 1fr); }
+  .sobre-grid   { grid-template-columns: 1fr; gap: 36px; }
   .contato-grid { grid-template-columns: 1fr; }
   .mapa-container { height: 320px; }
 
@@ -1248,43 +1262,151 @@ header.scrolled {
     padding: 20px 24px;
     max-width: 100%;
   }
-
   .hero-stat { padding: 0 16px; }
 }
 
-/* Mobile */
-@media (max-width: 600px) {
-  .section { padding: 56px 0; }
+/* Tablet menor / phablet — 768px (iPad mini, Android tablets) */
+@media (max-width: 768px) {
+  .section        { padding: 60px 0; }
+  .section-header { margin-bottom: 44px; }
 
-  .servicos-grid { grid-template-columns: 1fr; }
-  .produtos-grid { grid-template-columns: 1fr; }
+  .hero-content { padding-top: 40px; padding-bottom: 56px; }
+  .hero-cta     { margin-bottom: 40px; }
+
+  .sobre-grid { gap: 28px; }
+
+  .servico-card { padding: 26px 22px; }
+  .produto-card { padding: 28px 22px; }
+  .dif-card     { padding: 24px 20px; }
+
+  .mapa-container { height: 280px; }
+  .contato-grid   { gap: 36px; }
+
+  .footer-grid { gap: 28px; padding: 52px 0 40px; }
+
+  .hero::after,
+  .sobre-section::after,
+  .servicos-section::after,
+  .produtos-section::after,
+  .diferenciais-section::after { height: 56px; }
+}
+
+/* Mobile — 600px */
+@media (max-width: 600px) {
+  .section { padding: 52px 0; }
+
+  .servicos-grid     { grid-template-columns: 1fr; }
+  .produtos-grid     { grid-template-columns: 1fr; }
   .diferenciais-grid { grid-template-columns: 1fr; }
-  .footer-grid { grid-template-columns: 1fr; }
-  .footer-brand { grid-column: auto; }
+  .footer-grid       { grid-template-columns: 1fr; gap: 24px; }
+  .footer-brand      { grid-column: auto; }
 
   .hero-stats {
     flex-direction: column;
     gap: 0;
     padding: 16px;
   }
-
   .hero-stat-divider {
     width: 80%;
     height: 1px;
     margin: 12px 0;
   }
-
   .hero-stat { padding: 8px 0; }
 
   .hero-cta { flex-direction: column; align-items: center; }
-  .btn { width: 100%; justify-content: center; max-width: 300px; }
+  .btn { width: 100%; justify-content: center; max-width: 320px; }
 
-  .section-header { margin-bottom: 40px; }
+  .section-header { margin-bottom: 36px; }
+
+  .mapa-container { height: 250px; }
+
+  .hero::after,
+  .sobre-section::after,
+  .servicos-section::after,
+  .produtos-section::after,
+  .diferenciais-section::after { height: 48px; }
 }
 
-/* Mobile pequeno */
+/* Mobile médio — iPhone 14/15, Samsung, Pixel (≤480px) */
+@media (max-width: 480px) {
+  :root { --header-height: 64px; }
+
+  .container { padding: 0 16px; }
+  .section   { padding: 44px 0; }
+
+  .section-header     { margin-bottom: 28px; }
+  .section-header p   { font-size: 0.93rem; }
+
+  .hero-content { padding-top: 28px; padding-bottom: 44px; }
+  .hero-badge   { font-size: 0.72rem; padding: 5px 12px; }
+  .hero-sub     { font-size: 0.92rem; }
+  .hero-cta     { gap: 10px; margin-bottom: 32px; }
+
+  .btn { padding: 12px 20px; font-size: 0.88rem; max-width: 100%; }
+  .btn-whatsapp-contato { font-size: 0.9rem; padding: 12px 20px; }
+
+  .hero-stats { padding: 14px 12px; }
+  .stat-num   { font-size: 1.9rem; }
+
+  .sobre-badges { gap: 8px; }
+  .badge-item   { font-size: 0.78rem; padding: 6px 12px; }
+
+  .servico-card { padding: 22px 18px; }
+  .produto-card { padding: 24px 18px; }
+  .dif-card     { padding: 22px 18px; }
+
+  .servico-icon { width: 48px; height: 48px; font-size: 18px; border-radius: 10px; }
+  .produto-icon { width: 60px; height: 60px; font-size: 22px; border-radius: 14px; }
+  .dif-icon     { width: 50px; height: 50px; font-size: 18px; border-radius: 10px; }
+
+  .mapa-container { height: 220px; }
+  .contato-grid   { gap: 24px; }
+
+  .footer-grid    { padding: 40px 0 28px; gap: 20px; }
+  .footer-contato p { font-size: 0.82rem; }
+}
+
+/* Mobile pequeno — 380px (iPhone SE, Android compactos) */
 @media (max-width: 380px) {
-  .brand-name { font-size: 1.1rem; }
+  .container  { padding: 0 14px; }
+  .brand-name { font-size: 1.05rem; }
+
+  .hero-stats { padding: 12px 10px; }
+  .stat-num   { font-size: 1.75rem; }
+  .stat-label { font-size: 0.7rem; }
+
+  .hero-badge { font-size: 0.68rem; padding: 4px 10px; }
+  .hero-sub   { font-size: 0.88rem; }
+
+  .mvv-card     { padding: 18px 16px; }
+  .servico-card { padding: 20px 16px; }
+  .produto-card { padding: 20px 16px; }
+  .dif-card     { padding: 20px 16px; }
+
+  .footer-nav h4,
+  .footer-contato h4 { font-size: 0.8rem; }
+  .footer-nav ul li a { font-size: 0.85rem; }
+
+  .whatsapp-float { width: 50px; height: 50px; font-size: 24px; bottom: 20px; right: 20px; }
+}
+
+/* Muito pequeno — dispositivos legados (≤320px) */
+@media (max-width: 320px) {
+  .container  { padding: 0 10px; }
+  .brand-name { font-size: 0.95rem; }
+  .brand-icon { width: 32px; height: 32px; font-size: 14px; }
+
+  .btn { font-size: 0.82rem; padding: 10px 14px; }
+
+  .hero-stats { padding: 10px 8px; }
+  .stat-num   { font-size: 1.6rem; }
+  .stat-plus  { font-size: 1.1rem; }
+
+  .servico-card h3,
+  .produto-card h3,
+  .dif-card h3 { font-size: 0.95rem; }
+
+  .whatsapp-float { width: 46px; height: 46px; font-size: 20px; bottom: 16px; right: 16px; }
 }
 
 /* =====================================================
@@ -1459,22 +1581,17 @@ header.scrolled {
 /* ===== DESATIVAR PARALLAX EM MOBILE/TABLET (≤1023px) ===== */
 /* Evita bugs de renderização em iOS e Android */
 @media (max-width: 1023px) {
-  .hero-bg {
-    background-attachment: scroll, scroll;
-  }
-  .sobre-section {
-    background-attachment: scroll, scroll;
-  }
-  .servicos-section {
-    background-attachment: scroll, scroll;
-  }
-  .produtos-section {
-    background-attachment: scroll, scroll;
-  }
-  .diferenciais-section {
-    background-attachment: scroll, scroll;
-  }
+  .hero-bg,
+  .sobre-section,
+  .servicos-section,
+  .produtos-section,
+  .diferenciais-section,
   .contato-section {
     background-attachment: scroll, scroll;
   }
+
+  /* Tablet landscape (1024px ~ 900px): ajusta navegação e espaçamentos */
+  .desktop-nav ul li a { padding: 7px 10px; font-size: 0.82rem; }
+  .sobre-grid  { gap: 40px; }
+  .hero-stats  { max-width: 100%; }
 }
