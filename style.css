@@ -1290,7 +1290,7 @@ header.scrolled {
   width: 0%;
   background: linear-gradient(90deg, var(--laranja), var(--laranja-claro));
   border-radius: 2px;
-  animation: loaderProgress 2.6s ease forwards;
+  animation: loaderProgress 1.5s ease forwards;
 }
 
 @keyframes loaderProgress {

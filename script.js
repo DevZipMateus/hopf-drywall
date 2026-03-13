@@ -378,11 +378,11 @@ function initCursorGlow() {
   const loader = document.getElementById('page-loader');
   if (!loader) return;
 
-  /* Esconde após ~3s (2800ms visível + 550ms fade) */
+  /* Esconde após ~2s (1600ms visível + 550ms fade) */
   setTimeout(() => {
     loader.classList.add('hide');
     setTimeout(() => loader.remove(), 600);
-  }, 2800);
+  }, 1600);
 })();
 
 
