@@ -265,6 +265,113 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
 
 /* =============================================
+   12. HERO PARALLAX — conteúdo deriva no scroll
+   ============================================= */
+function initHeroParallax() {
+  if ('ontouchstart' in window) return;
+
+  const heroContent = document.querySelector('.hero-content');
+  const hero        = document.querySelector('.hero');
+  if (!heroContent || !hero) return;
+
+  window.addEventListener('scroll', () => {
+    const scrollY = window.scrollY;
+    const heroH   = hero.offsetHeight;
+    if (scrollY < heroH) {
+      heroContent.style.transform = `translateY(${scrollY * 0.28}px)`;
+      heroContent.style.opacity   = Math.max(0, 1 - (scrollY / heroH) * 1.6);
+    } else {
+      heroContent.style.transform = '';
+      heroContent.style.opacity   = '';
+    }
+  }, { passive: true });
+}
+
+
+/* =============================================
+   13. BOTÕES MAGNÉTICOS — CTAs do hero
+   ============================================= */
+function initMagneticButtons() {
+  if ('ontouchstart' in window) return;
+
+  document.querySelectorAll('.hero-cta .btn').forEach(btn => {
+    btn.addEventListener('mousemove', e => {
+      const rect = btn.getBoundingClientRect();
+      const x = (e.clientX - rect.left - rect.width  / 2) * 0.22;
+      const y = (e.clientY - rect.top  - rect.height / 2) * 0.22;
+      btn.style.transform = `translate(${x}px, ${y}px)`;
+    });
+
+    btn.addEventListener('mouseleave', () => {
+      btn.style.transition = 'transform 0.45s ease';
+      btn.style.transform  = '';
+      setTimeout(() => { btn.style.transition = ''; }, 500);
+    });
+  });
+}
+
+
+/* =============================================
+   14. SPLIT TEXT — H2 seções palavra a palavra
+   ============================================= */
+function initSplitText() {
+  document.querySelectorAll('.section-header h2').forEach(el => {
+    const words = el.textContent.trim().split(' ');
+    el.innerHTML = words
+      .map((w, i) => `<span class="word-reveal" style="--i:${i}">${w}</span>`)
+      .join(' ');
+  });
+
+  const h2Obs = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      entry.target.querySelectorAll('.word-reveal')
+        .forEach(w => w.classList.add('visible'));
+      h2Obs.unobserve(entry.target);
+    });
+  }, { threshold: 0.5 });
+
+  document.querySelectorAll('.section-header').forEach(el => h2Obs.observe(el));
+}
+
+
+/* =============================================
+   15. SECTION TAG POP-IN + LINHA DECORATIVA
+   ============================================= */
+function initSectionTagAnimation() {
+  const tagObs = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const tag = entry.target.querySelector('.section-tag');
+      if (tag) setTimeout(() => tag.classList.add('visible'), 80);
+      setTimeout(() => entry.target.classList.add('line-visible'), 300);
+      tagObs.unobserve(entry.target);
+    });
+  }, { threshold: 0.45 });
+
+  document.querySelectorAll('.section-header').forEach(el => tagObs.observe(el));
+}
+
+
+/* =============================================
+   16. CURSOR GLOW — luz suave seguindo o cursor
+   ============================================= */
+function initCursorGlow() {
+  if ('ontouchstart' in window) return;
+
+  const glow = document.createElement('div');
+  glow.className = 'cursor-glow';
+  glow.setAttribute('aria-hidden', 'true');
+  document.body.appendChild(glow);
+
+  document.addEventListener('mousemove', e => {
+    glow.style.left = e.clientX + 'px';
+    glow.style.top  = e.clientY + 'px';
+  }, { passive: true });
+}
+
+
+/* =============================================
    INICIALIZAÇÃO
    ============================================= */
 document.addEventListener('DOMContentLoaded', () => {
@@ -273,6 +380,11 @@ document.addEventListener('DOMContentLoaded', () => {
   initRipple();
   initCardTilt();
   initCounters();
+  initHeroParallax();
+  initMagneticButtons();
+  initSplitText();
+  initSectionTagAnimation();
+  initCursorGlow();
 
   if (window.innerWidth > 600) {
     typeWriter(document.querySelector('.hero-content h2'), 700);
