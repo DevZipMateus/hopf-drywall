@@ -746,17 +746,43 @@ header.scrolled {
 }
 
 .servico-card {
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.10);
+  position: relative;
+  overflow: hidden;
+  background: rgba(18, 36, 58, 0.82);
+  border: 1px solid rgba(255,255,255,0.12);
   border-radius: var(--radius-lg);
   padding: 32px 26px;
-  transition: background var(--transicao), transform var(--transicao), box-shadow var(--transicao);
+  transition: transform var(--transicao), box-shadow var(--transicao), border-color var(--transicao);
+}
+
+/* Imagem de fundo individual do card */
+.servico-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: var(--img);
+  background-size: cover;
+  background-position: center;
+  opacity: 0.22;
+  transition: transform 0.55s ease, opacity 0.35s ease;
+  z-index: 0;
 }
 
 .servico-card:hover {
-  background: rgba(255,255,255,0.11);
-  transform: translateY(-5px);
-  box-shadow: 0 16px 40px rgba(0,0,0,0.2);
+  transform: translateY(-6px);
+  box-shadow: 0 20px 48px rgba(0,0,0,0.35);
+  border-color: rgba(232,119,34,0.5);
+}
+
+.servico-card:hover::before {
+  transform: scale(1.07);
+  opacity: 0.32;
+}
+
+/* Todo conteúdo acima da imagem */
+.servico-card > * {
+  position: relative;
+  z-index: 1;
 }
 
 .servico-icon {
@@ -782,7 +808,7 @@ header.scrolled {
 
 .servico-card p {
   font-size: 0.92rem;
-  color: rgba(255,255,255,0.68);
+  color: rgba(255,255,255,0.72);
   line-height: 1.7;
 }
 
@@ -801,6 +827,8 @@ header.scrolled {
 }
 
 .produto-card {
+  position: relative;
+  overflow: hidden;
   background: var(--branco);
   border: 1px solid var(--cinza-borda);
   border-radius: var(--radius-lg);
@@ -809,10 +837,34 @@ header.scrolled {
   transition: box-shadow var(--transicao), transform var(--transicao), border-color var(--transicao);
 }
 
+/* Imagem de fundo individual do card */
+.produto-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: var(--img);
+  background-size: cover;
+  background-position: center;
+  opacity: 0.07;
+  transition: transform 0.55s ease, opacity 0.35s ease;
+  z-index: 0;
+}
+
 .produto-card:hover {
   box-shadow: 0 16px 48px var(--sombra-forte);
   transform: translateY(-6px);
   border-color: var(--laranja);
+}
+
+.produto-card:hover::before {
+  transform: scale(1.07);
+  opacity: 0.13;
+}
+
+/* Todo conteúdo acima da imagem */
+.produto-card > * {
+  position: relative;
+  z-index: 1;
 }
 
 .produto-icon {
